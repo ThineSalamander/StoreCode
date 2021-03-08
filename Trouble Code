@@ -1,0 +1,247 @@
+public class StoreTester {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+Store store1 = new Store("An ordinary store");
+
+Store store2 = new Store("Another ordinary store");
+
+GroceryStore grocery1 = new GroceryStore("Flipkart", 69420,"part of claim");
+
+GroceryStore grocery2 = new GroceryStore("MyStore", 42069, "independent store");
+
+
+Restaurant restaurant1 = new Restaurant("Mom's cafe", 25000, 3.5);
+
+Restaurant restaurant2 = new Restaurant("Dad's coffee shop", 46379, 1.69);
+
+System.out.println(store1);
+
+System.out.println(store2);
+
+System.out.println(grocery1);
+
+System.out.println(grocery2);
+
+System.out.println(restaurant1);
+
+System.out.println("Average tax per year: $"+ restaurant1.averageTaxPerYear());
+
+System.out.println(restaurant2);
+
+System.out.println("Average tax per year: $" + restaurant2.averageTaxPerYear());
+
+                }
+
+}
+public class Restaurant extends Store {
+
+private int peopleServedEveryYear;
+
+private double averagePricePerPerson;
+
+// constructor
+
+public Restaurant(String newName, int peopleServedEveryYear,
+
+double averagePricePerPerson) {
+
+super(newName);
+this.peopleServedEveryYear = peopleServedEveryYear;
+this.averagePricePerPerson = averagePricePerPerson;
+}
+
+//getters and setters
+public int getPeopleServedEveryYear() {
+ return peopleServedEveryYear;
+}
+
+public void setPeopleServedEveryYear(int peopleServedEveryYear) {
+this.peopleServedEveryYear = peopleServedEveryYear;
+}
+
+public double getAveragePricePerPerson() {
+return averagePricePerPerson;
+}
+
+public void setAveragePricePerPerson(double averagePricePerPerson) {
+this.averagePricePerPerson = averagePricePerPerson;
+}
+//calculates and returns the average amount of tax paid per year
+public double averageTaxPerYear() {
+    
+double averagePricePerYear = averagePricePerPerson * peopleServedEveryYear;
+
+double averageTaxPerYear = averagePricePerYear * SALES_TAX_RATE;
+
+return averageTaxPerYear;
+}
+
+@Override
+public String toString() {
+//appending additional details and returning the super class String
+return super.toString() + ", People served every year: " + peopleServedEveryYear + ", Average price per person: $" + averagePricePerPerson;
+}
+}
+class GroceryStore extends Store {
+    private double revenues;
+    private String status;
+    private double tax;
+    public GroceryStore(String name, double revenues, String Status) {
+        super(name);
+        this.revenues = revenues;
+        this.status = status;
+    }
+
+
+    public double getRevenues(){
+        return revenues;
+    }
+    public void setRevenues(double revenues) {
+    this.revenues = revenues;
+}
+    public String getStatus(){
+        return status;
+    }
+    public void setStatus(String status) {
+    this.status = status;
+}
+   //calculates and returns the average amount of tax paid per year
+public double tax() {
+    
+double tax = revenues * SALES_TAX_RATE;
+
+return tax;
+}
+
+    @Override
+    public String toString() {
+//appending additional details and returning the super class String
+return super.toString() + "Revenue: $" + revenues + ", Status: " + status + "Taxes: $" + tax;
+}
+}
+public class Store
+
+{
+
+  public final double SALES_TAX_RATE = 0.06;
+
+  private String name;
+
+ 
+
+  /**
+
+  * Constructor:<BR>
+
+  * Allows client to set beginning value for name
+
+  * This constructor takes one parameter<BR>
+
+  * Calls mutator method
+
+  * @param name the name of the store
+
+  */
+
+  public Store( String name )
+
+  {
+
+    setName( name );
+
+  }
+
+ 
+
+  /** getName method
+
+  * @return a String, the name of the store
+
+  */
+
+  public String getName( )
+
+  {
+
+    return name;
+
+  }
+
+ 
+
+  /**
+
+  * Mutator method:<BR>
+
+  * Allows client to set value of name
+
+  * @param name the new name for the store
+
+  */
+
+  public void setName( String name )
+
+  {
+
+    this.name = name;
+
+  }
+
+ 
+
+  /**
+
+  * @return a string representation of the store
+
+  */
+
+  public String toString( )
+
+  {
+
+    return( "name: " + name );
+
+  }
+
+ 
+
+  /**
+
+  * equals method
+
+  * Compares two Store objects for the same field value
+
+  * @param o another Store object
+
+  * @return a boolean, true if this object
+
+  * has the same field value as the parameter s
+
+  */
+
+  public boolean equals( Object o )
+
+  {
+
+      if ( ! ( o instanceof Store ) )
+
+        return false;
+
+      else
+
+      {
+
+        Store s = (Store) o;
+
+      return ( name.equalsIgnoreCase( s.name ) );
+
+    }
+
+  }
+ public static void main(String[] args) {
+     
+ }
+}
